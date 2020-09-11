@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import AddTodo from './components/AddTodo';
 
 export default function App() {
   const [todos, setTodos] = useState([
-    {text: 'buy coffee', key: 1},
-    {text: 'create an app', key: 2},
-    {text: 'play on the switch', key: 3},
+    {text: 'Hi There!', key: 1},
+    {text: 'Type Anything in the text box above', key: 2},
+    {text: 'Then Tap on th Add Todo button to save it', key: 3},
+    {text: 'Just Tap on the Todo Item to delete it', key: 4},
   ]);
 
   const pressHandler = (key) => {
@@ -19,10 +20,7 @@ export default function App() {
 
   const submitHandler = (text) => {
     setTodos((prevTodos) => {
-      return [
-        {text: text, key: Math.random().toString()},
-        ...prevTodos
-      ];
+      return [{text: text, key: Math.random().toString()}, ...prevTodos];
     });
   };
 
@@ -45,12 +43,12 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: '#fff',
-    flex: 1,
-  },
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+  },
+  content: {
+    padding: 40,
   },
   list: {
     marginTop: 20,
